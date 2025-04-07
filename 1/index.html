@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>وبسایت شخصی | پورتفولیو</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap');
+        
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+        }
+        
+        .skill-badge {
+            transition: all 0.3s ease;
+        }
+        
+        .skill-badge:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-card {
+            transition: all 0.3s ease;
+            perspective: 1000px;
+        }
+        
+        .project-card-inner {
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        
+        .project-card:hover .project-card-inner {
+            transform: rotateY(10deg);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #3b82f6;
+            right: -8px;
+            top: 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            background: #e5e7eb;
+            right: 0;
+            top: 0;
+        }
+        
+        .input-field {
+            transition: all 0.3s ease;
+        }
+        
+        .input-field:focus {
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Floating Elements -->
+    <div class="fixed top-20 left-10 w-16 h-16 rounded-full bg-blue-400 opacity-10 -z-10 floating hidden lg:block"></div>
+    <div class="fixed bottom-40 right-20 w-24 h-24 rounded-full bg-purple-400 opacity-10 -z-10 floating hidden lg:block" style="animation-delay: 0.5s;"></div>
+    <div class="fixed top-1/3 right-1/4 w-20 h-20 rounded-full bg-indigo-400 opacity-10 -z-10 floating hidden lg:block" style="animation-delay: 1s;"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center glass-effect rounded-full px-6 py-3 shadow-sm">
+                <a href="#" class="text-2xl font-bold gradient-text">پورتفولیو</a>
+                
+                <div class="hidden md:flex space-x-8 space-x-reverse">
+                    <a href="#home" class="text-gray-700 hover:text-blue-500 transition duration-300 font-medium">خانه</a>
+                    <a href="#about" class="text-gray-700 hover:text-blue-500 transition duration-300 font-medium">درباره من</a>
+                    <a href="#skills" class="text-gray-700 hover:text-blue-500 transition duration-300 font-medium">مهارت‌ها</a>
+                    <a href="#projects" class="text-gray-700 hover:text-blue-500 transition duration-300 font-medium">پروژه‌ها</a>
+                    <a href="#contact" class="text-gray-700 hover:text-blue-500 transition duration-300 font-medium">تماس</a>
+                </div>
+                
+                <button id="mobile-menu-button" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 glass-effect rounded-lg p-4 shadow-lg">
+                <a href="#home" class="block py-2 text-gray-700 hover:text-blue-500 transition duration-300">خانه</a>
+                <a href="#about" class="block py-2 text-gray-700 hover:text-blue-500 transition duration-300">درباره من</a>
+                <a href="#skills" class="block py-2 text-gray-700 hover:text-blue-500 transition duration-300">مهارت‌ها</a>
+                <a href="#projects" class="block py-2 text-gray-700 hover:text-blue-500 transition duration-300">پروژه‌ها</a>
+                <a href="#contact" class="block py-2 text-gray-700 hover:text-blue-500 transition duration-300">تماس</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-20">
+        <div class="container mx-auto px-6 py-20 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-12 md:mb-0">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">سلام، من <span class="gradient-text">امیر</span> هستم</h1>
+                <h2 class="text-2xl md:text-3xl text-gray-600 mb-6">طراح و توسعه دهنده وب</h2>
+                <p class="text-gray-600 mb-8 leading-relaxed max-w-lg">
+                    من عاشق خلق تجربیات دیجیتال زیبا و کاربردی هستم. با ترکیب خلاقیت و تکنولوژی، محصولاتی می‌سازم که هم زیبا هستند و هم عملکرد عالی دارند.
+                </p>
+                <div class="flex space-x-4 space-x-reverse">
+                    <a href="#contact" class="gradient-bg hover:opacity-90 text-white px-6 py-3 rounded-full font-medium transition duration-300 shadow-lg">
+                        ارتباط با من
+                    </a>
+                    <a href="#projects" class="border border-blue-500 text-blue-500 hover:bg-blue-50 px-6 py-3 rounded-full font-medium transition duration-300">
+                        نمونه کارها
+                    </a>
+                </div>
+                
+                <div class="mt-10 flex space-x-6 space-x-reverse">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold gradient-text">۵+</div>
+                        <div class="text-gray-500">سال تجربه</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold gradient-text">۴۰+</div>
+                        <div class="text-gray-500">پروژه انجام شده</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold gradient-text">۳۰+</div>
+                        <div class="text-gray-500">مشتری راضی</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="md:w-1/2 flex justify-center relative">
+                <div class="relative">
+                    <div class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl relative">
+                        <img src="1.jpeg" 
+                             alt="Profile" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-5 -left-5 bg-white p-4 rounded-lg shadow-lg">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-500 mr-3">
+                                <i class="fas fa-medal text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold">۵+ سال</p>
+                                <p class="text-sm text-gray-500">تجربه کاری</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">درباره <span class="gradient-text">من</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto"></div>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/3 mb-10 lg:mb-0 flex justify-center">
+                    <div class="relative">
+                        <div class="w-64 h-64 md:w-72 md:h-72 rounded-2xl overflow-hidden border-4 border-white shadow-xl">
+                            <img src="1.jpeg" 
+                                 alt="About Me" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -bottom-5 -right-5 bg-white p-4 rounded-lg shadow-lg">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-purple-500 mr-3">
+                                    <i class="fas fa-code text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold">۱۰۰۰۰+</p>
+                                    <p class="text-sm text-gray-500">خط کد</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-2/3 lg:pr-10">
+                    <h3 class="text-2xl font-bold mb-6">چرا من را انتخاب کنید؟</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        من یک توسعه دهنده وب با بیش از ۵ سال تجربه در طراحی و توسعه وبسایت‌های مدرن هستم. تخصص من در ایجاد رابط‌های کاربری زیبا و کاربرپسند با استفاده از آخرین تکنولوژی‌های وب است. من به کیفیت کد و تجربه کاربری عالی اعتقاد دارم و همیشه سعی می‌کنم بهترین راه‌حل‌ها را برای مشکلات پیچیده ارائه دهم.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-2 rounded-full mr-3">
+                                <i class="fas fa-check text-blue-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">طراحی اختصاصی</h4>
+                                <p class="text-gray-600 text-sm">طراحی منحصر به فرد برای هر پروژه بر اساس نیازهای شما</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-2 rounded-full mr-3">
+                                <i class="fas fa-check text-blue-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">کدنویسی تمیز</h4>
+                                <p class="text-gray-600 text-sm">کدهای سازمان یافته و قابل نگهداری</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-2 rounded-full mr-3">
+                                <i class="fas fa-check text-blue-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">پشتیبانی کامل</h4>
+                                <p class="text-gray-600 text-sm">پشتیبانی پس از تحویل پروژه</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-2 rounded-full mr-3">
+                                <i class="fas fa-check text-blue-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">سئو بهینه</h4>
+                                <p class="text-gray-600 text-sm">بهینه سازی برای موتورهای جستجو</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex space-x-4 space-x-reverse">
+                        <a href="#contact" class="gradient-bg hover:opacity-90 text-white px-6 py-3 rounded-full font-medium transition duration-300 shadow-lg">
+                            استخدام من
+                        </a>
+                        <a href="#" class="border border-blue-500 text-blue-500 hover:bg-blue-50 px-6 py-3 rounded-full font-medium transition duration-300">
+                            دانلود رزومه
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">مهارت‌های <span class="gradient-text">من</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
+                <div>
+                    <h3 class="text-xl font-bold mb-6">مهارت‌های فنی</h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">توسعه فرانت‌اند</span>
+                                <span class="text-blue-500">۹۵%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="gradient-bg h-2 rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">طراحی UI/UX</span>
+                                <span class="text-blue-500">۹۰%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="gradient-bg h-2 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">توسعه بک‌اند</span>
+                                <span class="text-blue-500">۸۰%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="gradient-bg h-2 rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6">مهارت‌های نرم</h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">حل مسئله</span>
+                                <span class="text-blue-500">۹۰%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="gradient-bg h-2 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">کار تیمی</span>
+                                <span class="text-blue-500">۸۵%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="gradient-bg h-2 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">مدیریت زمان</span>
+                                <span class="text-blue-500">۸۸%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="gradient-bg h-2 rounded-full" style="width: 88%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <h3 class="text-xl font-bold mb-6 text-center">تکنولوژی‌هایی که استفاده می‌کنم</h3>
+                
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                    <div class="skill-badge bg-white p-4 rounded-lg shadow-sm flex flex-col items-center">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" class="w-12 h-12 mb-2">
+                        <span>HTML5</span>
+                    </div>
+                    
+                    <div class="skill-badge bg-white p-4 rounded-lg shadow-sm flex flex-col items-center">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" class="w-12 h-12 mb-2">
+                        <span>CSS3</span>
+                    </div>
+                    
+                    <div class="skill-badge bg-white p-4 rounded-lg shadow-sm flex flex-col items-center">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="w-12 h-12 mb-2">
+                        <span>JavaScript</span>
+                    </div>
+                    
+                    <div class="skill-badge bg-white p-4 rounded-lg shadow-sm flex flex-col items-center">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="w-12 h-12 mb-2">
+                        <span>React</span>
+                    </div>
+                    
+                    <div class="skill-badge bg-white p-4 rounded-lg shadow-sm flex flex-col items-center">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" class="w-12 h-12 mb-2">
+                        <span>Node.js</span>
+                    </div>
+                    
+                    <div class="skill-badge bg-white p-4 rounded-lg shadow-sm flex flex-col items-center">
+                        <img src="4.jpeg" alt="Tailwind CSS" class="w-12 h-12 mb-2">
+                        <span>Tailwind</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">پروژه‌های <span class="gradient-text">اخیر</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-md">
+                    <div class="project-card-inner">
+                        <div class="relative overflow-hidden">
+                            <img src="2.jpeg" 
+                                 alt="Project 1" class="w-full h-48 object-cover transition duration-500 hover:scale-110">
+                            <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition duration-300">
+                                <a href="#" class="text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-full font-medium transition duration-300">
+                                    مشاهده پروژه
+                                </a>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">وبسایت فروشگاهی</h3>
+                            <p class="text-gray-600 mb-4">یک وبسایت فروشگاهی مدرن با امکانات پیشرفته سبد خرید و پرداخت آنلاین</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">React</span>
+                                <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Node.js</span>
+                                <span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">MongoDB</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-md">
+                    <div class="project-card-inner">
+                        <div class="relative overflow-hidden">
+                            <img src="3.jpeg" 
+                                 alt="Project 2" class="w-full h-48 object-cover transition duration-500 hover:scale-110">
+                            <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition duration-300">
+                                <a href="#" class="text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-full font-medium transition duration-300">
+                                    مشاهده پروژه
+                                </a>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">اپلیکیشن موبایل</h3>
+                            <p class="text-gray-600 mb-4">اپلیکیشن مدیریت مالی شخصی با نمودارها و گزارش‌های تحلیلی</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">React Native</span>
+                                <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Firebase</span>
+                                <span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">Redux</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-md">
+                    <div class="project-card-inner">
+                        <div class="relative overflow-hidden">
+                            <img src="2.jpeg" 
+                                 alt="Project 3" class="w-full h-48 object-cover transition duration-500 hover:scale-110">
+                            <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition duration-300">
+                                <a href="#" class="text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-full font-medium transition duration-300">
+                                    مشاهده پروژه
+                                </a>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">وبسایت شرکتی</h3>
+                            <p class="text-gray-600 mb-4">طراحی وبسایت شرکتی با قابلیت مدیریت محتوا و فرم‌های تماس</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Next.js</span>
+                                <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Tailwind CSS</span>
+                                <span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">Sanity.io</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-10">
+                <a href="#" class="inline-block border border-blue-500 text-blue-500 hover:bg-blue-50 px-6 py-3 rounded-full font-medium transition duration-300">
+                    مشاهده همه پروژه‌ها
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">نظرات <span class="gradient-text">مشتریان</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Client" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">سارا محمدی</h4>
+                            <p class="text-gray-500 text-sm">مدیر عامل شرکت نوآوران</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">
+                        کار با امیر تجربه‌ای عالی بود. او دقیقاً آنچه را که می‌خواستیم تحویل داد و حتی پیشنهادهای بهتری برای بهبود پروژه ارائه کرد. قطعاً دوباره با او همکاری خواهیم کرد.
+                    </p>
+                    <div class="mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Client" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">رضا حسینی</h4>
+                            <p class="text-gray-500 text-sm">مدیر فروشگاه اینترنتی</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">
+                        وبسایتی که امیر برای ما طراحی کرد دقیقاً مطابق با نیازهای کسب و کار ما بود. سرعت بارگذاری عالی و طراحی بسیار کاربرپسند است. مشتریان ما هم از تجربه کاربری آن راضی هستند.
+                    </p>
+                    <div class="mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Client" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">نرگس رضایی</h4>
+                            <p class="text-gray-500 text-sm">بنیانگذار استارتاپ</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">
+                        امیر نه تنها یک توسعه‌دهنده عالی است، بلکه درک خوبی از تجربه کاربری دارد. او به ما کمک کرد تا محصولی بسازیم که کاربران واقعاً دوست دارند. تیم ما از همکاری با او بسیار راضی بود.
+                    </p>
+                    <div class="mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">تماس با <span class="gradient-text">من</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-4">اگر پروژه‌ای دارید یا می‌خواهید با من همکاری کنید، لطفاً از طریق فرم زیر پیام بگذارید.</p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row">
+                <div class="lg:w-1/2 mb-10 lg:mb-0 lg:pr-10">
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">نام شما</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg input-field" placeholder="نام و نام خانوادگی">
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">آدرس ایمیل</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg input-field" placeholder="example@domain.com">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">موضوع</label>
+                            <input type="text" id="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg input-field" placeholder="موضوع پیام">
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">پیام شما</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg input-field" placeholder="متن پیام..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full gradient-bg hover:opacity-90 text-white px-6 py-3 rounded-lg font-medium transition duration-300 shadow-lg">
+                            ارسال پیام
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="bg-gray-50 p-8 rounded-xl h-full">
+                        <h3 class="text-2xl font-bold mb-6">اطلاعات تماس</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-map-marker-alt text-blue-500"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">آدرس</h4>
+                                    <p class="text-gray-600">تهران، خیابان ولیعصر، کوچه شهید فلانی، پلاک ۱۲</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-envelope text-blue-500"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">ایمیل</h4>
+                                    <p class="text-gray-600">amir@example.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-phone-alt text-blue-500"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">تلفن</h4>
+                                    <p class="text-gray-600">۰۹۱۲۱۲۳۴۵۶۷</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-bold mb-4">من را در شبکه‌های اجتماعی دنبال کنید</h4>
+                            <div class="flex space-x-4 space-x-reverse">
+                                <a href="#" class="bg-blue-500 hover:bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center transition duration-300 shadow">
+                                    <i class="fab fa-telegram"></i>
+                                </a>
+                                <a href="#" class="bg-blue-400 hover:bg-blue-500 text-white w-10 h-10 rounded-full flex items-center justify-center transition duration-300 shadow">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white w-10 h-10 rounded-full flex items-center justify-center transition duration-300 shadow">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="bg-gray-800 hover:bg-gray-900 text-white w-10 h-10 rounded-full flex items-center justify-center transition duration-300 shadow">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="text-2xl font-bold gradient-text">پورتفولیو</a>
+                    <p class="mt-2 text-gray-400">طراحی و توسعه توسط امیر</p>
+                </div>
+                
+                <div class="flex space-x-6 space-x-reverse">
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-telegram text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© ۱۴۰۲ تمام حقوق محفوظ است.</p>
+                
+                <div class="flex space-x-6 space-x-reverse">
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">حریم خصوصی</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">قوانین</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">کوکی‌ها</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 left-8 bg-blue-500 hover:bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition duration-300 opacity-0 invisible">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Active Navigation Link on Scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const scrollPosition = window.scrollY + 100;
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    document.querySelectorAll('nav a').forEach(link => {
+                        link.classList.remove('text-blue-500');
+                        if (link.getAttribute('href') === `#${sectionId}`) {
+                            link.classList.add('text-blue-500');
+                        }
+                    });
+                }
+            });
+            
+            // Back to Top Button
+            const backToTopButton = document.getElementById('back-to-top');
+            if (window.scrollY > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        // Back to Top Button Click
+        document.getElementById('back-to-top').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Form Submission
+        const contactForm = document.querySelector('form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('پیام شما با موفقیت ارسال شد! به زودی با شما تماس خواهم گرفت.');
+                contactForm.reset();
+            });
+        }
+    </script>
+</body>
+</html>
